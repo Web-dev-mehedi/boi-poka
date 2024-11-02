@@ -96,7 +96,7 @@ const ListedBooks = () => {
   const navigation = useNavigate();
 
   return (
-    <div>
+    <div className="pt-14">
       <div className=" flex flex-col justify-center items-center gap-6">
         <h1 className="bg-[#13131316] w-full text-3xl text-center font-bold rounded-2xl p-6">Books</h1>
 
