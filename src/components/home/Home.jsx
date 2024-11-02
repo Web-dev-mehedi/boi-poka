@@ -1,5 +1,5 @@
 import React from "react";
-import { useLoaderData } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 import Books from "../books/books";
 import heroImg from "../../assets/pngwing 1.png";
 
@@ -16,9 +16,9 @@ const Home = () => {
             <h1 className="text-6xl font-bold playFair font-bolt leading-snug">
               Books to freshen up your bookshelf
             </h1>
-            <button className="btn bg-[#23BE0A] px-7 py-3 text-white hover:text-black">
+            <Link to="/listed-books" className="btn bg-[#23BE0A] px-7 py-3 text-white hover:text-black">
               View The List
-            </button>
+            </Link>
           </div>
         </div>
       </div>
