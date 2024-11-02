@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { useLoaderData, useParams } from "react-router-dom";
-import { addToStoredReadList, addToStoredWishList } from "../../utilities/utilities";
+import { addToStoredReadList, addToStoredWishList} from "../../utilities/utilities";
+
 
 const BookDetails = () => {
     //
@@ -11,20 +12,25 @@ const BookDetails = () => {
 
     // 
 
+
+ 
+
   const [active, setActive] = useState(true);
   const [readBook,setReadBook] = useState([]);
   const handleActive1 = (id) => {
     setActive(false);
-    addToStoredReadList(id)
+    addToStoredReadList(id);
+  
     const book = data.find(item => item.bookId == id);
     const newReadBook = [...readBook,book]
-    setReadBook(newReadBook)
-    console.log(readBook)
+    setReadBook(newReadBook);
 
+  
   };
   const handleActive2 = (id) => {
     setActive(true);
-    addToStoredWishList(id)
+    addToStoredWishList(id);
+   
   };
 
   const bId = Number(bookId);
@@ -42,6 +48,9 @@ const BookDetails = () => {
     totalPages,
     category,
   } = data.find((book) => book.bookId === bId);
+  // 
+
+
   // 
   return (
     <div className=" md:flex justify-between items-start gap-10 py-28">
@@ -107,7 +116,7 @@ const BookDetails = () => {
               Read
             </button>
             <button
-              onClick={()=>handleActive2(bookId)}
+              onClick={()=>handleActive2(bookId) }
               className={
                 active
                   ? "bg-[#50B1C9] text-white btn btn-outline px-10"
@@ -119,6 +128,7 @@ const BookDetails = () => {
           </div>
         </div>
       </div>
+      
     </div>
   );
 };

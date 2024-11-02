@@ -1,3 +1,4 @@
+import { toast } from "react-toastify";
 
 const getStoredReadList =()=>{
   const storedListStr= localStorage.getItem("read-list");
@@ -13,11 +14,15 @@ const getStoredReadList =()=>{
 const addToStoredReadList =(id)=>{
      const storedList = getStoredReadList(id);
      if(storedList.includes(id)){
-         console.log("data already exits")
+         console.log("data already exits");
+         toast.error("book Already have on mark as read")
+      
+        
      }else{
         storedList.push(id)
         const storedListStr = JSON.stringify(storedList);
-        localStorage.setItem("read-list", storedListStr)
+        localStorage.setItem("read-list", storedListStr);
+        toast.success("Book added to mark as read")
      }
 }
 
@@ -37,11 +42,13 @@ const getStoredWishList =()=>{
   const addToStoredWishList =(id)=>{
        const storedList = getStoredWishList(id);
        if(storedList.includes(id)){
-           console.log("data already exits")
+           console.log("data already exits");
+           toast.error("book Already have on your wishList")
        }else{
           storedList.push(id)
           const storedListStr = JSON.stringify(storedList);
-          localStorage.setItem("wish-list", storedListStr)
+          localStorage.setItem("wish-list", storedListStr);
+          toast.success("Added to wishList")
        }
   }
 

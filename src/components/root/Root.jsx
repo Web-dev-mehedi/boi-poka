@@ -9,7 +9,7 @@ const Root = () => {
         <div className='container mx-auto'>
            {/* header */}
             <Header/>
-               <div className='w-11/12 mx-auto'>
+               <div className='w-11/12 mx-auto min-h-screen'>
                     {/*  */}
                       <Outlet></Outlet>
                     {/* footer */}
