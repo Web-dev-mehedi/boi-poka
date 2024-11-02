@@ -4,20 +4,30 @@ import { useLoaderData, useParams } from "react-router-dom";
 import { addToStoredReadList, addToStoredWishList } from "../../utilities/utilities";
 
 const BookDetails = () => {
+    //
+    const { bookId } = useParams();
+    //
+    const data = useLoaderData();
+
+    // 
+
+
   const [active, setActive] = useState(true);
+  const [readBook,setReadBook] = useState([]);
   const handleActive1 = (id) => {
     setActive(false);
     addToStoredReadList(id)
+    const book = data.find(item => item.bookId == id);
+    const newReadBook = [...readBook,book]
+    setReadBook(newReadBook)
+    console.log(readBook)
 
   };
   const handleActive2 = (id) => {
     setActive(true);
     addToStoredWishList(id)
   };
-  //
-  const { bookId } = useParams();
-  //
-  const data = useLoaderData();
+
   const bId = Number(bookId);
   // for spicific book by id
   const {
@@ -33,7 +43,7 @@ const BookDetails = () => {
     totalPages,
     category,
   } = data.find((book) => book.bookId === bId);
-  console.log(bookId, bookName);
+  // 
   return (
     <div className=" md:flex justify-between items-start gap-10 py-28">
       <figure className="w-1/2 mx-auto p-24 bg-[#f3f3f3] rounded-2xl">

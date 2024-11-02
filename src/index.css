@@ -23,3 +23,8 @@ body{
     border-radius: 16px;
     padding: 16px 20px;
 }
+
+.recharts-wrapper{
+    margin: auto;
+    width: 100%;
+}

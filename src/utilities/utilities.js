@@ -43,4 +43,4 @@ const getStoredWishList =()=>{
        }
   }
 
-export {addToStoredReadList,addToStoredWishList}
+export {addToStoredReadList,addToStoredWishList,getStoredReadList,getStoredWishList}
