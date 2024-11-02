@@ -4,8 +4,8 @@ import { NavLink, Link } from "react-router-dom";
 const Header = () => {
   return (
     <div className="navbar bg-[#ffffff6d] backdrop-blur-md py-8 border-b border-[#eeeeee87] sticky top-0 z-30">
-      <div className="w-11/12 mx-auto">
-        <div className="navbar-start">
+      <div className="w-11/12 mx-auto flex gap-8 flex-wrap sm:flex-nowrap">
+        <div className="navbar-start w-full">
           <div className="dropdown">
             <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
               <svg
@@ -43,7 +43,7 @@ const Header = () => {
             <NavLink to="/pages-to-read">Pages to Read</NavLink>
           </ul>
         </div>
-        <div className="navbar-end space-x-6 text-right">
+        <div className="navbar-end flex gap-4 justify-start sm:justify-end text-right">
           <Link to="/" className="btn btn-primary">
             Sign In
           </Link>

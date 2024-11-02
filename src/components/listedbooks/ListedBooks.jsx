@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import PropTypes from "prop-types";
+import PropTypes, { number } from "prop-types";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
 import { Link, useLoaderData, useNavigate } from "react-router-dom";
@@ -10,6 +10,7 @@ import {
 } from "../../utilities/utilities";
 import { TbHttpDelete } from "react-icons/tb";
 import { FaArrowDown } from "react-icons/fa";
+import { toast } from "react-toastify";
 
 const ListedBooks = () => {
   const [sort,setSort] = useState("")
@@ -41,7 +42,7 @@ const ListedBooks = () => {
   }, []);
 
   //
-  const handleDelete = (id, idx) => {
+  const handleDelete = (id, idx,name) => {
     //
     const afterDeleteRead = readList.filter((item) => item.bookId !== id);
     setReadList(afterDeleteRead);
@@ -49,6 +50,14 @@ const ListedBooks = () => {
     const afterDeleteWish = WishList.filter((item) => item.bookId !== idx);
     setWishlist(afterDeleteWish);
     deleteFormLs(id, idx);
+
+    if( id !== null ){
+      toast.warning(`${name} book removed from read list`)
+    }
+
+    if( idx !== null ){
+      toast.warning(`${name} book removed from wish list`)
+    }
   };
 
   //
@@ -200,7 +209,7 @@ const ListedBooks = () => {
                   </div>
                 </div>
                 <div
-                  onClick={() => handleDelete(item.bookId, null)}
+                  onClick={() => handleDelete(item.bookId, null,item.bookName)}
                   className=" hover:bg-red-400 transition-all absolute -right-3 -top-12 cursor-pointer bg-slate-300 rounded-full p-2"
                 >
                   <TbHttpDelete className="text-2xl" />
@@ -278,7 +287,7 @@ const ListedBooks = () => {
                   </div>
                 </div>
                 <div
-                  onClick={() => handleDelete(null, item.bookId)}
+                  onClick={() => handleDelete(null, item.bookId,item.bookName)}
                   className="absolute -right-3 -top-12 cursor-pointer bg-slate-300 rounded-full p-2 hover:bg-red-400 transition-all"
                 >
                   <TbHttpDelete className="text-2xl" />
