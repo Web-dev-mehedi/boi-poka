@@ -1,0 +1,25 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+
+
+body{
+    font-family: "Work Sans", sans-serif;
+}
+
+.playFair{
+    font-family: "Playfair Display", serif;
+}
+
+.active{
+    color: #23BE0A;
+    font-weight: 600;
+    font-size: 1.1rem;
+    border: 1px solid #23BE0A;
+    border-radius: 16px;
+    padding: 16px 20px;
+}
