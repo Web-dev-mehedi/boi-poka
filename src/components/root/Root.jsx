@@ -9,9 +9,11 @@ const Root = () => {
         <div className='container mx-auto'>
            {/* header */}
             <Header/>
-            {/*  */}
-              <Outlet></Outlet>
-            {/* footer */}
+               <div className='w-11/12 mx-auto'>
+                    {/*  */}
+                      <Outlet></Outlet>
+                    {/* footer */}
+               </div>
              <Footer/> 
         </div>
     );

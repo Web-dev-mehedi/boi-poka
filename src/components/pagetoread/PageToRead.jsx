@@ -6,7 +6,7 @@ import { useLoaderData } from "react-router-dom";
 const PageToRead = () => {
   const data = useLoaderData();
 
-  const colors = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042", "red", "pink"];
+  const colors = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042", "red", "pink","black","green","#d8d8d8d0"];
 
 
   const getPath = (x, y, width, height) => {
@@ -27,10 +27,10 @@ const PageToRead = () => {
   };
 
   return (
-    <div className="mx-auto container py-16">
+    <div className="mx-auto container py-16 overflow-x-auto">
       <BarChart
-        width={1000}
-        height={600}
+        width={2000}
+        height={500}
         data={data}
         margin={{
           top: 20,

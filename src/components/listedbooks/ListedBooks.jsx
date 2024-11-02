@@ -4,10 +4,11 @@ import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
 import { Link, useLoaderData, useNavigate } from "react-router-dom";
 import {
+  deleteFormLs,
   getStoredReadList,
   getStoredWishList,
 } from "../../utilities/utilities";
-import Book from "../book/Book";
+import { TbHttpDelete } from "react-icons/tb";
 
 const ListedBooks = () => {
   //
@@ -20,11 +21,13 @@ const ListedBooks = () => {
     //   for readList
     const storedReadList = getStoredReadList();
     const intSoredReadList = storedReadList.map((item) => Number(item));
-    console.log(intSoredReadList, allBooks);
     const readBoooks = allBooks.filter((item) =>
       intSoredReadList.includes(item.bookId)
     );
     setReadList(readBoooks);
+    // 
+
+   
     //  for wishList
     const storedWishList = getStoredWishList();
     const intStoredWishList = storedWishList.map((item) => Number(item));
@@ -33,6 +36,19 @@ const ListedBooks = () => {
     );
     setWishlist(wishBooks);
   }, []);
+
+console.log(readList)
+  // 
+  const handleDelete=(id,idx)=>{
+       // 
+    const afterDeleteRead = readList.filter(item => item.bookId !== id );
+    setReadList(afterDeleteRead)
+    // 
+    const afterDeleteWish = WishList.filter(item => item.bookId !== idx );
+    setWishlist(afterDeleteWish)
+    deleteFormLs(id,idx)
+
+  }
 
   // 
 
@@ -46,9 +62,9 @@ const ListedBooks = () => {
       </TabList>
 
       <TabPanel>
-        <div className="py-10">
+        <div className="py-10 ">
           {readList.map((item) => (
-            <div className=" md:flex justify-between items-start gap-10 p-6 border border-[#d8d8d8d0] rounded-2xl mb-6">
+            <div className=" md:flex justify-between items-start gap-10 p-6 border border-[#d8d8d8d0] rounded-2xl mb-6 relative">
               <figure className="w-3/12 mx-auto p-20 bg-[#f3f3f3] rounded-2xl">
                 <img
                   src={item.image}
@@ -113,6 +129,9 @@ const ListedBooks = () => {
                   </div>
                 </div>
               </div>
+              <div onClick={()=> handleDelete(item.bookId,null)} className=" hover:bg-red-400 transition-all absolute -right-3 -top-3 cursor-pointer bg-slate-300 rounded-full p-2">
+                <TbHttpDelete className="text-2xl"/>
+              </div>
             </div>
           ))}
         </div>
@@ -120,7 +139,7 @@ const ListedBooks = () => {
       <TabPanel>
       <div className="py-10">
         {WishList.map((item) => (
-          <div className=" md:flex justify-between items-start gap-10 p-6 border border-[#d8d8d8d0] rounded-2xl mb-6">
+          <div className=" md:flex justify-between items-start gap-10 p-6 border border-[#d8d8d8d0] rounded-2xl mb-6 relative">
             <figure className="w-3/12 mx-auto p-20 bg-[#f3f3f3] rounded-2xl">
               <img src={item.image} alt="book" className="w-full rounded-2xl" />
             </figure>
@@ -179,6 +198,9 @@ const ListedBooks = () => {
                 </div>
               </div>
             </div>
+            <div onClick={()=> handleDelete(null,item.bookId)} className="absolute -right-3 -top-3 cursor-pointer bg-slate-300 rounded-full p-2 hover:bg-red-400 transition-all">
+                <TbHttpDelete className="text-2xl"/>
+              </div>
           </div>
         ))}
          </div>

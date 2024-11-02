@@ -11,7 +11,6 @@ const BookDetails = () => {
 
     // 
 
-
   const [active, setActive] = useState(true);
   const [readBook,setReadBook] = useState([]);
   const handleActive1 = (id) => {
